@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CoreLocation
 
-class CurrentLocationViewController: UIViewController {
+class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate {
     
+    let locationManager = CLLocationManager() // The CLLocationManager is the object that will give the GPS coordinates
     
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
@@ -20,9 +22,22 @@ class CurrentLocationViewController: UIViewController {
     
     
     @IBAction func getLocation() {
-        // do nothing yet
+        locationManager.delegate = self //It tells the location manager that the view controller is its delegate
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.startUpdatingLocation() //start the location manager
+        
+        // From that moment on the CLLocationManager object will send location updates to its delegate, i.e. the view controller
     }
     
+    
+    // MARK: CLLocationManagerDelegate methods
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("didFailWithError \(error)")
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let newLocation = locations.last!
+        print("didUpdateLocations \(newLocation)")
+    }
     
 
     override func viewDidLoad() {
