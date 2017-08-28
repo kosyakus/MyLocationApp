@@ -29,12 +29,19 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             return
         }
         
+        // if user denied for the first time it will show the message to activate in settings. This shows the alert if the authorization status is denied or restricted
+        if authStatus == .denied || authStatus == .restricted {
+            showLocationServicesDeniedAlert()
+            return
+        }
+        
         locationManager.delegate = self //It tells the location manager that the view controller is its delegate
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation() //start the location manager
         
         // From that moment on the CLLocationManager object will send location updates to its delegate, i.e. the view controller
     }
+    
     
     
     // MARK: CLLocationManagerDelegate methods
@@ -44,6 +51,16 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let newLocation = locations.last!
         print("didUpdateLocations \(newLocation)")
+    }
+    
+    
+    // This pops up an alert with a helpful hint
+    func showLocationServicesDeniedAlert() {
+        let alert = UIAlertController(title: "Location Services Disabled", message:
+            "Please enable location services for this app in Settings.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
 
