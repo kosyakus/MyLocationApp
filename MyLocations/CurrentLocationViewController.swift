@@ -69,9 +69,32 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         let newLocation = locations.last!
         print("didUpdateLocations \(newLocation)")
         
-        location = newLocation //store the CLLocation object into the instance variable
+        /*location = newLocation //store the CLLocation object into the instance variable
         lastLocationError = nil //This clears out the old error state
-        updateLabels()
+        updateLabels()*/
+        
+// If we don't want to update every second:
+        // give the most recently found location under the assumption that you might not have moved much in the last few seconds
+        if newLocation.timestamp.timeIntervalSinceNow < -5 {
+            return
+        }
+        // To determine whether new readings are more accurate than previous ones
+        if newLocation.horizontalAccuracy < 0 {
+            return
+        }
+        // if this is the very first location reading (location is nil) or the new location is more accurate than the previous reading, you continue to step 4. Otherwise you ignore this location update
+        if location == nil || location!.horizontalAccuracy > newLocation.horizontalAccuracy {
+            // It clears out any previous error if there was one and stores the new CLLocation object into the location variable
+            lastLocationError = nil
+            location = newLocation
+            updateLabels()
+            // If the new location’s accuracy is equal to or better than the desired accuracy, then stop asking the location manager for updates (accuracy was set up to 10m)
+            if newLocation.horizontalAccuracy <=
+                locationManager.desiredAccuracy {
+                print("*** We're done!")
+                stopLocationManager()
+            }
+        }
     }
     
     
