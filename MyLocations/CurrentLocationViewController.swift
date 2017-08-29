@@ -46,8 +46,20 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         locationManager.startUpdatingLocation() //start the location manager
         
         // From that moment on the CLLocationManager object will send location updates to its delegate, i.e. the view controller */
-        startLocationManager()
+        //startLocationManager()
+        
+        
+        // changes the state of the button: If the button is pressed while the app is already doing the location fetching, then it stops the location manager
+        if updatingLocation {
+            stopLocationManager()
+        } else {
+            location = nil
+            lastLocationError = nil
+            startLocationManager()
+        }
+        
         updateLabels()
+        configureGetButton()
     }
     
     
@@ -63,6 +75,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         lastLocationError = error //In case of more serious error, store the error in a new var
         stopLocationManager() //If obtaining a location is impossible then location manager should stop
         updateLabels()
+        configureGetButton()
         
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -93,6 +106,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                 locationManager.desiredAccuracy {
                 print("*** We're done!")
                 stopLocationManager()
+                configureGetButton()
             }
         }
     }
@@ -164,12 +178,22 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         
         
         updateLabels()
+        configureGetButton()
         
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+// if the app is currently updating the location then the button’s title becomes Stop, otherwise it is Get My Location. Should be called anywhere where was called updateLabels()
+    func configureGetButton() {
+        if updatingLocation {
+            getButton.setTitle("Stop", for: .normal)
+        } else {
+            getButton.setTitle("Get My Location", for: .normal)
+        }
     }
 
 
