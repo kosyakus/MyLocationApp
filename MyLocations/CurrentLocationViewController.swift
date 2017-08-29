@@ -19,6 +19,12 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     var updatingLocation = false
     var lastLocationError: Error?
     
+    // variables for converting coordinates into text place
+    let geocoder = CLGeocoder() //is the object that will perform the geocoding
+    var placemark: CLPlacemark? //is the object that contains the address results
+    var performingReverseGeocoding = false //set to true when a geocoding operation is taking place
+    var lastGeocodingError: Error? //will contain an Error object if something went wrong
+    
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
@@ -55,11 +61,14 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         } else {
             location = nil
             lastLocationError = nil
+            placemark = nil
+            lastGeocodingError = nil
             startLocationManager()
         }
         
         updateLabels()
         configureGetButton()
+        
     }
     
     
@@ -108,6 +117,25 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                 stopLocationManager()
                 configureGetButton()
             }
+            
+            // check whether it is not busy by looking at the performingReverseGeocoding variable
+            if !performingReverseGeocoding {
+                print("*** Going to geocode")
+                performingReverseGeocoding = true
+                geocoder.reverseGeocodeLocation(newLocation, completionHandler: {
+                    placemarks, error in //closure only performed after CLGeocoder finds an address or encounters an error
+                    print("*** Found placemarks: \(placemarks), error: \(error)")
+                    
+                    self.lastGeocodingError = error
+                    if error == nil, let p = placemarks, !p.isEmpty { //if there’s no error and the unwrapped placemarks array is not empty
+                        self.placemark = p.last!
+                    } else {
+                        self.placemark = nil // in case of error-set to nil
+                    }
+                    self.performingReverseGeocoding = false
+                    self.updateLabels()
+                })
+            }
         }
     }
     
@@ -118,6 +146,18 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
             tagButton.isHidden = false
             messageLabel.text = ""
+            
+            //If it found an address, it shows that to the user, otherwise it shows a status message
+            if let placemark = placemark {
+                addressLabel.text = string(from: placemark)
+            } else if performingReverseGeocoding {
+                addressLabel.text = "Searching for Address..."
+            } else if lastGeocodingError != nil {
+                addressLabel.text = "Error Finding Address"
+            } else {
+                addressLabel.text = "No Address Found"
+            }
+            
         } else {
             latitudeLabel.text = ""
             longitudeLabel.text = ""
@@ -194,6 +234,33 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         } else {
             getButton.setTitle("Get My Location", for: .normal)
         }
+    }
+    
+//The func to format the CLPlacemark object into a string:
+    func string(from placemark: CLPlacemark) -> String {
+        // Create new string variable for the first line of text
+        var line1 = ""
+        // If the placemark has a subThoroughfare(house number), add it to the string
+        if let s = placemark.subThoroughfare {
+            line1 += s + " "
+        }
+        // -/- (street name)
+        if let s = placemark.thoroughfare {
+            line1 += s
+        }
+        // This adds the locality (the city), administrative area (the state or province), and postal code (or zip code), with spaces between them where appropriate
+        var line2 = ""
+        if let s = placemark.locality {
+            line2 += s + " "
+        }
+        if let s = placemark.administrativeArea {
+            line2 += s + " "
+        }
+        if let s = placemark.postalCode {
+            line2 += s
+        }
+        // adds both lines together
+        return line1 + "\n" + line2
     }
 
 
