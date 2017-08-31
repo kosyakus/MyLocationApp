@@ -25,6 +25,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     var performingReverseGeocoding = false //set to true when a geocoding operation is taking place
     var lastGeocodingError: Error? //will contain an Error object if something went wrong
     
+    var timer: Timer?
+    
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
@@ -211,6 +213,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
             updatingLocation = true
+            
+            timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(didTimeOut), userInfo: nil, repeats: false) // set up a timer object that sends the “didTimeOut” message to self after 60 seconds
         }
     }
 
@@ -219,6 +223,10 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
             updatingLocation = false
+            
+            if let timer = timer {
+                timer.invalidate()
+            } //cancel the timer in case the location manager is stopped before the time-out fires. This happens when an accurate enough location is found within one minute after starting, or when the user tapped the Stop button
         }
     }
     
@@ -281,6 +289,18 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         }
         // adds both lines together
         return line1 + "\n" + line2
+    }
+    
+    
+    func didTimeOut() {
+        print("*** Time out")
+        if location == nil {
+            stopLocationManager()
+            lastLocationError = NSError(domain: "MyLocationsErrorDomain", code: 1, userInfo: nil)
+            updateLabels()
+            configureGetButton()
+            //If after that one minute there still is no valid location, stop the location manager, create own error code, and update the screen.
+        }
     }
 
 
