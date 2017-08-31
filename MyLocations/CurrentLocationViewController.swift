@@ -104,6 +104,12 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         if newLocation.horizontalAccuracy < 0 {
             return
         }
+        
+        var distance = CLLocationDistance(Double.greatestFiniteMagnitude)
+        if let location = location {
+            distance = newLocation.distance(from: location)
+        }
+        
         // if this is the very first location reading (location is nil) or the new location is more accurate than the previous reading, you continue to step 4. Otherwise you ignore this location update
         if location == nil || location!.horizontalAccuracy > newLocation.horizontalAccuracy {
             // It clears out any previous error if there was one and stores the new CLLocation object into the location variable
@@ -116,6 +122,10 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                 print("*** We're done!")
                 stopLocationManager()
                 configureGetButton()
+                
+                if distance > 0 {
+                    performingReverseGeocoding = false
+                }
             }
             
             // check whether it is not busy by looking at the performingReverseGeocoding variable
@@ -124,7 +134,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                 performingReverseGeocoding = true
                 geocoder.reverseGeocodeLocation(newLocation, completionHandler: {
                     placemarks, error in //closure only performed after CLGeocoder finds an address or encounters an error
-                    print("*** Found placemarks: \(placemarks), error: \(error)")
+                    print("*** Found placemarks: \(String(describing: placemarks)), error: \(String(describing: error))")
                     
                     self.lastGeocodingError = error
                     if error == nil, let p = placemarks, !p.isEmpty { //if there’s no error and the unwrapped placemarks array is not empty
@@ -135,6 +145,16 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                     self.performingReverseGeocoding = false
                     self.updateLabels()
                 })
+            } else if distance < 1 {
+                // If the coordinate from this reading is not significantly different from the previous reading and it has been more than 10 seconds since you’ve received that original reading, then it’s a good point to stop
+                let timeInterval = newLocation.timestamp.timeIntervalSince(
+                    location!.timestamp)
+                if timeInterval > 10 {
+                    print("*** Force done!")
+                    stopLocationManager()
+                    updateLabels()
+                    configureGetButton()
+                }
             }
         }
     }
@@ -167,7 +187,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         }
         
         let statusMessage: String
-        if let error = lastLocationError as? NSError {
+        if let error = lastLocationError as NSError? {
             if error.domain == kCLErrorDomain && error.code == CLError.denied.rawValue {
                 statusMessage = "Location Services Disabled"
             } else {
