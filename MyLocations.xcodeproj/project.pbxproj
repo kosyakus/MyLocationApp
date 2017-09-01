@@ -13,6 +13,7 @@
 		849554CE1F5360EF008AAEC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849554CC1F5360EF008AAEC6 /* Main.storyboard */; };
 		849554D01F5360EF008AAEC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849554CF1F5360EF008AAEC6 /* Assets.xcassets */; };
 		849554D31F5360EF008AAEC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849554D11F5360EF008AAEC6 /* LaunchScreen.storyboard */; };
+		849554DB1F59F219008AAEC6 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554DA1F59F219008AAEC6 /* LocationDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		849554CF1F5360EF008AAEC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		849554D21F5360EF008AAEC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		849554D41F5360EF008AAEC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		849554DA1F59F219008AAEC6 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +59,10 @@
 			isa = PBXGroup;
 			children = (
 				849554C61F5360EF008AAEC6 /* AppDelegate.swift */,
-				849554C81F5360EF008AAEC6 /* CurrentLocationViewController.swift */,
 				849554CA1F5360EF008AAEC6 /* SecondViewController.swift */,
 				849554CC1F5360EF008AAEC6 /* Main.storyboard */,
+				849554C81F5360EF008AAEC6 /* CurrentLocationViewController.swift */,
+				849554DA1F59F219008AAEC6 /* LocationDetailsViewController.swift */,
 				849554CF1F5360EF008AAEC6 /* Assets.xcassets */,
 				849554D11F5360EF008AAEC6 /* LaunchScreen.storyboard */,
 				849554D41F5360EF008AAEC6 /* Info.plist */,
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849554DB1F59F219008AAEC6 /* LocationDetailsViewController.swift in Sources */,
 				849554CB1F5360EF008AAEC6 /* SecondViewController.swift in Sources */,
 				849554C71F5360EF008AAEC6 /* AppDelegate.swift in Sources */,
 				849554C91F5360EF008AAEC6 /* CurrentLocationViewController.swift in Sources */,
