@@ -131,7 +131,10 @@ class LocationDetailsViewController: UITableViewController {
     
     
     @IBAction func done() {
-        dismiss(animated: true, completion: nil)
+        //dismiss(animated: true, completion: nil)
+        
+        let hudView = HudView.hud(inView: navigationController!.view, animated: true) //create a HudView object and adds it to the navigation controller’s view with an animation
+        hudView.text = "Tagged" //set the text property on the hudView
     }
     
     
