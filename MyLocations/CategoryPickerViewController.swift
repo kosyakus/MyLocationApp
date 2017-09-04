@@ -74,5 +74,15 @@ class CategoryPickerViewController: UITableViewController {
             selectedIndexPath = indexPath
         }
     }
+    
+//This looks at the selected index-path and puts the corresponding category name into the selectedCategoryName property.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PickedCategory" {
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell) {
+                selectedCategoryName = categories[indexPath.row]
+            }
+        }
+    }
 }
 

@@ -26,6 +26,7 @@ class LocationDetailsViewController: UITableViewController {
     var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0) //contains only the latitude and longitude from the CLLocation
     var placemark: CLPlacemark? // contains the address information – street name, city name, and so on
     
+    var categoryName = "No Category" //temporarily store the chosen category
     
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var categoryLabel: UILabel!
@@ -44,7 +45,7 @@ class LocationDetailsViewController: UITableViewController {
         super.viewDidLoad()
         
         descriptionTextView.text = ""
-        categoryLabel.text = ""
+        categoryLabel.text = categoryName
         
         latitudeLabel.text = String(format: "%.8f", coordinate.latitude)
         longitudeLabel.text = String(format: "%.8f", coordinate.longitude)
@@ -105,6 +106,21 @@ class LocationDetailsViewController: UITableViewController {
     
     @IBAction func cancel() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    
+//This sets the selectedCategoryName property of the category picker
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PickCategory" {
+            let controller = segue.destination as! CategoryPickerViewController
+            controller.selectedCategoryName = categoryName
+        }
+    }
+    
+    @IBAction func categoryPickerDidPickCategory(_ segue: UIStoryboardSegue) { //in order to make an unwind segue you need to define an action method that takes a UIStoryboardSegue parameter
+        let controller = segue.source as! CategoryPickerViewController //look at the view controller that sent the segue (the source)
+        categoryName = controller.selectedCategoryName //read the value of its selectedCategoryName property
+        categoryLabel.text = categoryName
     }
     
 }
