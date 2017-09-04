@@ -303,6 +303,16 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         }
     }
 
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TagLocation" {
+            let navigationController = segue.destination as! UINavigationController
+            let controller = navigationController.topViewController as! LocationDetailsViewController
+            controller.coordinate = location!.coordinate //Tag Location button that triggers the segue won’t be visible unless a location is found. At this point, location will never be nil
+            controller.placemark = placemark
+        }
+    }
 
 }
 

@@ -328,6 +328,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addressLabel" destination="MoQ-U5-8a3" id="fxY-2E-zmg"/>
+                        <outlet property="categoryLabel" destination="yFl-Rg-ppC" id="z7U-gs-HJh"/>
+                        <outlet property="dateLabel" destination="ORC-mk-Xpo" id="IGI-mj-bMT"/>
+                        <outlet property="descriptionTextView" destination="4fI-od-LDL" id="Tns-jz-MA6"/>
+                        <outlet property="latitudeLabel" destination="KQt-db-yCk" id="Gmv-Gn-cbd"/>
+                        <outlet property="longitudeLabel" destination="oGx-nu-10b" id="EoL-by-lje"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOC-pJ-pZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
