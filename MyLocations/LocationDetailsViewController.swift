@@ -56,6 +56,20 @@ class LocationDetailsViewController: UITableViewController {
             addressLabel.text = "No Address Found"
         }
         dateLabel.text = format(date: Date())
+        
+//keyboard will disappeare after tapping anywhere else on the screen
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        gestureRecognizer.cancelsTouchesInView = false
+        tableView.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    func hideKeyboard(_ gestureRecognizer: UIGestureRecognizer) {
+        let point = gestureRecognizer.location(in: tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
+        if indexPath != nil && indexPath!.section == 0 && indexPath!.row == 0 { //(If user taps inside the table view but not on a cell, for example somewhere in between two sections or on the section header. In that case indexPath will be nil)
+            return
+        }
+        descriptionTextView.resignFirstResponder()
     }
     
     
@@ -97,6 +111,23 @@ class LocationDetailsViewController: UITableViewController {
         }
         return text
     }
+    
+    
+    // MARK: - UITableViewDelegate
+    //When the user taps anywhere inside that first cell, the text view should activate, even if the tap wasn’t on the text view itself.
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if indexPath.section == 0 || indexPath.section == 1 {
+            return indexPath
+        } else {
+            return nil
+        }
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 && indexPath.row == 0 {
+            descriptionTextView.becomeFirstResponder()
+        }
+    }
+    
     
     
     @IBAction func done() {
