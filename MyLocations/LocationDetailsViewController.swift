@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import CoreLocation
-import Dispatch //This imports the Grand Central Dispatch framework
+//import Dispatch //This imports the Grand Central Dispatch framework
 
 //private global constant. Lives outside of the LocationDetailsViewController class (global) but it is only visible inside the LocationDetailsViewController.swift file (private).
 private let dateFormatter: DateFormatter = {
@@ -137,13 +137,17 @@ class LocationDetailsViewController: UITableViewController {
         let hudView = HudView.hud(inView: navigationController!.view, animated: true) //create a HudView object and adds it to the navigation controller’s view with an animation
         hudView.text = "Tagged" //set the text property on the hudView
         
-        let delayInSeconds = 0.6
+       /* let delayInSeconds = 0.6
     //these incantations tells the app to close the Tag Location screen after 0.6 seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds, execute:
             {
                 self.dismiss(animated: true, completion: nil)
         })
-        //DispatchQueue.main.asyncAfter() uses the time given by .now() + delayInSeconds to schedule the closure for some point in the future. After 0.6 seconds, the code from the closure finally runs and the screen closes
+        //DispatchQueue.main.asyncAfter() uses the time given by .now() + delayInSeconds to schedule the closure for some point in the future. After 0.6 seconds, the code from the closure finally runs and the screen closes */
+        
+        afterDelay(0.6, closure: {
+            self.dismiss(animated: true, completion: nil)
+        })
     }
     
     

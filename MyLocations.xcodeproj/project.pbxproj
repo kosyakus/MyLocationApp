@@ -16,6 +16,7 @@
 		849554DB1F59F219008AAEC6 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554DA1F59F219008AAEC6 /* LocationDetailsViewController.swift */; };
 		849554DD1F5D6C56008AAEC6 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554DC1F5D6C56008AAEC6 /* CategoryPickerViewController.swift */; };
 		849554DF1F5DC129008AAEC6 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554DE1F5DC129008AAEC6 /* HudView.swift */; };
+		849554E11F5F050C008AAEC6 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554E01F5F050C008AAEC6 /* Functions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		849554DA1F59F219008AAEC6 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 		849554DC1F5D6C56008AAEC6 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		849554DE1F5DC129008AAEC6 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
+		849554E01F5F050C008AAEC6 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				849554CA1F5360EF008AAEC6 /* SecondViewController.swift */,
 				849554CC1F5360EF008AAEC6 /* Main.storyboard */,
 				849554C81F5360EF008AAEC6 /* CurrentLocationViewController.swift */,
+				849554E01F5F050C008AAEC6 /* Functions.swift */,
 				849554DA1F59F219008AAEC6 /* LocationDetailsViewController.swift */,
 				849554DE1F5DC129008AAEC6 /* HudView.swift */,
 				849554DC1F5D6C56008AAEC6 /* CategoryPickerViewController.swift */,
@@ -151,6 +154,7 @@
 				849554DB1F59F219008AAEC6 /* LocationDetailsViewController.swift in Sources */,
 				849554CB1F5360EF008AAEC6 /* SecondViewController.swift in Sources */,
 				849554DF1F5DC129008AAEC6 /* HudView.swift in Sources */,
+				849554E11F5F050C008AAEC6 /* Functions.swift in Sources */,
 				849554C71F5360EF008AAEC6 /* AppDelegate.swift in Sources */,
 				849554DD1F5D6C56008AAEC6 /* CategoryPickerViewController.swift in Sources */,
 				849554C91F5360EF008AAEC6 /* CurrentLocationViewController.swift in Sources */,
