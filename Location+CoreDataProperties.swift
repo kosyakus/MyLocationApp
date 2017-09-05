@@ -8,8 +8,9 @@
 
 import Foundation
 import CoreData
-import CoreLocation
+import CoreLocation // added to change the placemark type
 
+//!!!!! It is better not to change anything in this file, it could be updated if change DataModel
 
 extension Location {
 
@@ -19,9 +20,9 @@ extension Location {
 
     @NSManaged public var latitude: Double
     @NSManaged public var longitude: Double
-    @NSManaged public var date: NSDate?
-    @NSManaged public var locationDescription: String?
-    @NSManaged public var category: String?
-    @NSManaged public var placemark: CLPlacemark?
+    @NSManaged public var date: Date // changed the type, remove the ?
+    @NSManaged public var locationDescription: String // remove the ?
+    @NSManaged public var category: String
+    @NSManaged public var placemark: CLPlacemark? // changed the type
 
 }
