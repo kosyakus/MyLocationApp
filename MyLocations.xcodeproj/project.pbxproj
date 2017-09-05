@@ -18,6 +18,8 @@
 		849554DF1F5DC129008AAEC6 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554DE1F5DC129008AAEC6 /* HudView.swift */; };
 		849554E11F5F050C008AAEC6 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554E01F5F050C008AAEC6 /* Functions.swift */; };
 		849554E41F5F332D008AAEC6 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 849554E21F5F332D008AAEC6 /* DataModel.xcdatamodeld */; };
+		849554E71F5F369A008AAEC6 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554E51F5F369A008AAEC6 /* Location+CoreDataClass.swift */; };
+		849554E81F5F369A008AAEC6 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554E61F5F369A008AAEC6 /* Location+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		849554DE1F5DC129008AAEC6 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		849554E01F5F050C008AAEC6 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		849554E31F5F332D008AAEC6 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		849554E51F5F369A008AAEC6 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
+		849554E61F5F369A008AAEC6 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +54,8 @@
 		849554BA1F5360EF008AAEC6 = {
 			isa = PBXGroup;
 			children = (
+				849554E51F5F369A008AAEC6 /* Location+CoreDataClass.swift */,
+				849554E61F5F369A008AAEC6 /* Location+CoreDataProperties.swift */,
 				849554C51F5360EF008AAEC6 /* MyLocations */,
 				849554C41F5360EF008AAEC6 /* Products */,
 			);
@@ -158,8 +164,10 @@
 				849554E41F5F332D008AAEC6 /* DataModel.xcdatamodeld in Sources */,
 				849554CB1F5360EF008AAEC6 /* SecondViewController.swift in Sources */,
 				849554DF1F5DC129008AAEC6 /* HudView.swift in Sources */,
+				849554E81F5F369A008AAEC6 /* Location+CoreDataProperties.swift in Sources */,
 				849554E11F5F050C008AAEC6 /* Functions.swift in Sources */,
 				849554C71F5360EF008AAEC6 /* AppDelegate.swift in Sources */,
+				849554E71F5F369A008AAEC6 /* Location+CoreDataClass.swift in Sources */,
 				849554DD1F5D6C56008AAEC6 /* CategoryPickerViewController.swift in Sources */,
 				849554C91F5360EF008AAEC6 /* CurrentLocationViewController.swift in Sources */,
 			);
