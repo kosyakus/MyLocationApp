@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //load the data model that was defined earlier, and connect it to an SQLite data store. The goal here is to create a so-called NSManagedObjectContext object. That is the object that is used to talk to Core Data
     //This code creates an instance variable persistentContainer of type NSPersistentContainer. To get the NSManagedObjectContext, simply ask the persistentContainer for its viewContext property.
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "DataModel")
-        container.loadPersistentStores(completionHandler: {
+        let container = NSPersistentContainer(name: "DataModel") //instantiate a new NSPC with the name of the data model
+        container.loadPersistentStores(completionHandler: { //to loadPersistentStores(), which loads the data from the database into memory and sets up the Core Data stack
             storeDescription, error in
             if let error = error {
                 fatalError("Could load data store: \(error)")
@@ -32,7 +32,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        //first have to find the UITabBarController and then look at its viewControllers array. Once it has a reference to the CurrentLocationViewController object, it gives it the managedObjectContext
+        let tabBarController = window!.rootViewController as! UITabBarController
+        if let tabBarViewControllers = tabBarController.viewControllers {
+            let currentLocationViewController = tabBarViewControllers[0] as! CurrentLocationViewController
+            currentLocationViewController.managedObjectContext = managedObjectContext
+        }
+        
         return true
     }
 
