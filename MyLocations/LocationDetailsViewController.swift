@@ -26,6 +26,7 @@ class LocationDetailsViewController: UITableViewController {
     
     
     var managedObjectContext: NSManagedObjectContext!
+    var date = Date() //need to store the current date in the new Location object and make that Date object once
     
     
     var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0) //contains only the latitude and longitude from the CLLocation
@@ -60,7 +61,7 @@ class LocationDetailsViewController: UITableViewController {
         } else {
             addressLabel.text = "No Address Found"
         }
-        dateLabel.text = format(date: Date())
+        dateLabel.text = format(date: date)
         
 //keyboard will disappeare after tapping anywhere else on the screen
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
@@ -149,9 +150,26 @@ class LocationDetailsViewController: UITableViewController {
         })
         //DispatchQueue.main.asyncAfter() uses the time given by .now() + delayInSeconds to schedule the closure for some point in the future. After 0.6 seconds, the code from the closure finally runs and the screen closes */
         
-        afterDelay(0.6, closure: {
-            self.dismiss(animated: true, completion: nil)
-        })
+        
+        // create a new Location instance
+        let location = Location(context: managedObjectContext)
+        // set its properties to whatever the user entered in the screen
+        location.locationDescription = descriptionTextView.text
+        location.category = categoryName
+        location.latitude = coordinate.latitude
+        location.longitude = coordinate.longitude
+        location.date = date
+        location.placemark = placemark
+        // save the context
+        do {
+            try managedObjectContext.save()
+            afterDelay(0.6) {
+                self.dismiss(animated: true, completion: nil)
+            }
+        } catch {
+            fatalError("Error: \(error)")
+        }
+        
     }
     
     
