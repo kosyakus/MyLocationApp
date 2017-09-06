@@ -8,8 +8,13 @@
 
 import UIKit
 import CoreLocation
+import CoreData
 
 class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate {
+    
+    
+    var managedObjectContext: NSManagedObjectContext! // use ! because it is optional and no need to unwrap
+    
     
     let locationManager = CLLocationManager() // The CLLocationManager is the object that will give the GPS coordinates
     
@@ -311,6 +316,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             let controller = navigationController.topViewController as! LocationDetailsViewController
             controller.coordinate = location!.coordinate //Tag Location button that triggers the segue won’t be visible unless a location is found. At this point, location will never be nil
             controller.placemark = placemark
+            
+            controller.managedObjectContext = managedObjectContext
         }
     }
 

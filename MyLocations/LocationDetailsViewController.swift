@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CoreLocation
 //import Dispatch //This imports the Grand Central Dispatch framework
+import CoreData
 
 //private global constant. Lives outside of the LocationDetailsViewController class (global) but it is only visible inside the LocationDetailsViewController.swift file (private).
 private let dateFormatter: DateFormatter = {
@@ -22,6 +23,9 @@ private let dateFormatter: DateFormatter = {
 // Instead you want to assign the result of that closure to dateFormatter. To make that happen, you use the () to perform or evaluate the closure – this runs the code inside the closure and returns the DateFormatter object.
 
 class LocationDetailsViewController: UITableViewController {
+    
+    
+    var managedObjectContext: NSManagedObjectContext!
     
     
     var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0) //contains only the latitude and longitude from the CLLocation
