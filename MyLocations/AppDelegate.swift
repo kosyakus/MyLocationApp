@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
 //load the data model that was defined earlier, and connect it to an SQLite data store. The goal here is to create a so-called NSManagedObjectContext object. That is the object that is used to talk to Core Data
+    //This code creates an instance variable persistentContainer of type NSPersistentContainer. To get the NSManagedObjectContext, simply ask the persistentContainer for its viewContext property.
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "DataModel")
         container.loadPersistentStores(completionHandler: {
@@ -26,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
 
+    
+    lazy var managedObjectContext: NSManagedObjectContext = self.persistentContainer.viewContext
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
