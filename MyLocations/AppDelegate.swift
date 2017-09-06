@@ -41,6 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         print(applicationDocumentsDirectory)
         
+        listenForFatalCoreDataNotifications()
+        
         return true
     }
 
@@ -66,6 +68,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
+    
+    func listenForFatalCoreDataNotifications() {
+        // Tell NotificationCenter that you want to be notified whenever a MyManagedObjectContextSaveDidFailNotification is posted
+        NotificationCenter.default.addObserver(
+            forName: MyManagedObjectContextSaveDidFailNotification,
+            object: nil, queue: OperationQueue.main, using: { notification in
+                // Create a UIAlertController to show the error message
+                let alert = UIAlertController(
+                    title: "Internal Error",
+                    message:
+                    "There was a fatal error in the app and it cannot continue.\n\n"
+                        + "Press OK to terminate the app. Sorry for the inconvenience.",
+                    preferredStyle: .alert)
+                // Add an action for the alert’s OK button. The code for handling the button press is again a closure. Instead of calling fatalError(), the closure creates an NSException object to terminate the app. That provides more information to the crash log.
+                let action = UIAlertAction(title: "OK", style: .default) { _ in
+                    let exception = NSException(
+                        name: NSExceptionName.internalInconsistencyException,
+                        reason: "Fatal Core Data error", userInfo: nil)
+                    exception.raise()
+                }
+                alert.addAction(action)
+                // present the alert
+                self.viewControllerForShowingAlert().present(alert, animated: true, completion: nil)
+        })
+    }
+    // finds a view controller that is currently visible
+    func viewControllerForShowingAlert() -> UIViewController {
+        let rootViewController = self.window!.rootViewController!
+        if let presentedViewController = rootViewController.presentedViewController {
+            return presentedViewController
+        } else {
+            return rootViewController
+        }
+    }
 
 }
 
