@@ -56,5 +56,18 @@ class LocationsViewController: UITableViewController {
     }
     
     
+//connect the LocationsViewController to the Location Details screen, so that when tap a row in the table, it lets user edit that location’s description and category
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditLocation" {
+            let navigationController = segue.destination as! UINavigationController
+            let controller = navigationController.topViewController as! LocationDetailsViewController
+            controller.managedObjectContext = managedObjectContext
+            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+                let location = locations[indexPath.row]
+                controller.locationToEdit = location
+            }
+        }
+    }
+    
     
 }

@@ -121,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="230" y="-667"/>
         </scene>
         <!--Tag Location-->
         <scene sceneID="zfS-c0-7CD">
@@ -164,7 +164,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="APl-9B-uau">
-                                                    <rect key="frame" x="15" y="12" width="71" height="21"/>
+                                                    <rect key="frame" x="15" y="12" width="70" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -405,7 +405,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-1108" y="-239"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RNt-Me-aXG">
@@ -473,6 +473,7 @@
                                 <connections>
                                     <outlet property="addressLabel" destination="BMB-Dd-JNk" id="adM-1J-1Kv"/>
                                     <outlet property="descriptionLabel" destination="PVy-yJ-uDC" id="flB-9f-ajg"/>
+                                    <segue destination="2No-iM-RLF" kind="presentation" identifier="EditLocation" id="H3p-sn-DIe"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -485,7 +486,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5Z-CZ-cEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1489" y="413"/>
+            <point key="canvasLocation" x="670" y="260"/>
         </scene>
         <!--Locations-->
         <scene sceneID="RXr-qw-jvw">
@@ -502,10 +503,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QV9-Dn-IyG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="413"/>
+            <point key="canvasLocation" x="-116" y="260"/>
         </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="pP1-Zs-VQk"/>
+    </inferredMetricsTieBreakers>
 </document>
