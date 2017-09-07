@@ -21,6 +21,7 @@
 		849554E71F5F369A008AAEC6 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554E51F5F369A008AAEC6 /* Location+CoreDataClass.swift */; };
 		849554E81F5F369A008AAEC6 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554E61F5F369A008AAEC6 /* Location+CoreDataProperties.swift */; };
 		849554EA1F60719F008AAEC6 /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554E91F60719F008AAEC6 /* LocationsViewController.swift */; };
+		849554EC1F61671C008AAEC6 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554EB1F61671C008AAEC6 /* LocationCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		849554E51F5F369A008AAEC6 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
 		849554E61F5F369A008AAEC6 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		849554E91F60719F008AAEC6 /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
+		849554EB1F61671C008AAEC6 /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				849554DA1F59F219008AAEC6 /* LocationDetailsViewController.swift */,
 				849554DC1F5D6C56008AAEC6 /* CategoryPickerViewController.swift */,
 				849554E91F60719F008AAEC6 /* LocationsViewController.swift */,
+				849554EB1F61671C008AAEC6 /* LocationCell.swift */,
 				849554CF1F5360EF008AAEC6 /* Assets.xcassets */,
 				849554D11F5360EF008AAEC6 /* LaunchScreen.storyboard */,
 				849554D41F5360EF008AAEC6 /* Info.plist */,
@@ -169,6 +172,7 @@
 				849554DF1F5DC129008AAEC6 /* HudView.swift in Sources */,
 				849554EA1F60719F008AAEC6 /* LocationsViewController.swift in Sources */,
 				849554E81F5F369A008AAEC6 /* Location+CoreDataProperties.swift in Sources */,
+				849554EC1F61671C008AAEC6 /* LocationCell.swift in Sources */,
 				849554E11F5F050C008AAEC6 /* Functions.swift in Sources */,
 				849554C71F5360EF008AAEC6 /* AppDelegate.swift in Sources */,
 				849554E71F5F369A008AAEC6 /* Location+CoreDataClass.swift in Sources */,
