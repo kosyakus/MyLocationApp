@@ -159,7 +159,15 @@ class LocationDetailsViewController: UITableViewController {
         //dismiss(animated: true, completion: nil)
         
         let hudView = HudView.hud(inView: navigationController!.view, animated: true) //create a HudView object and adds it to the navigation controller’s view with an animation
-        hudView.text = "Tagged" //set the text property on the hudView
+        
+        let location: Location //create a new Location instance
+        if let temp = locationToEdit {
+            hudView.text = "Updated" //set the text property on the hudView
+            location = temp
+        } else { //ask Core Data for a new Location object if it doesn’t already have one
+            hudView.text = "Tagged" //set the text property on the hudView
+            location = Location(context: managedObjectContext)
+        }
         
        /* let delayInSeconds = 0.6
     //these incantations tells the app to close the Tag Location screen after 0.6 seconds
@@ -171,7 +179,8 @@ class LocationDetailsViewController: UITableViewController {
         
         
         // create a new Location instance
-        let location = Location(context: managedObjectContext)
+        //let location = Location(context: managedObjectContext)
+        
         // set its properties to whatever the user entered in the screen
         location.locationDescription = descriptionTextView.text
         location.category = categoryName
