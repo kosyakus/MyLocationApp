@@ -38,6 +38,8 @@ class LocationsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem = editButtonItem
+        
         performFetch() // simolify the line below
         
    /*
