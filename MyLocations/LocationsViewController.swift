@@ -22,13 +22,20 @@ class LocationsViewController: UITableViewController {
             let fetchRequest = NSFetchRequest<Location>()
             let entity = Location.entity()
             fetchRequest.entity = entity
-            let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
-            fetchRequest.sortDescriptors = [sortDescriptor]
+            //let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        
+    //First this sorts Location objects by category and inside each of these groups it sorts by date
+        let sortDescriptor1 = NSSortDescriptor(key: "category", ascending: true)
+        let sortDescriptor2 = NSSortDescriptor(key: "date", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor1, sortDescriptor2]
+        
+            //fetchRequest.sortDescriptors = [sortDescriptor]
             fetchRequest.fetchBatchSize = 20 //how many objects will be fetched at a time
+        
             let fetchedResultsController = NSFetchedResultsController(
                 fetchRequest: fetchRequest,
                 managedObjectContext: self.managedObjectContext,
-                sectionNameKeyPath: nil,
+                sectionNameKeyPath: "category", //nil,
                 cacheName: "Locations") //needs to be a unique name that NSFetchedResultsController uses to cache the search results
             fetchedResultsController.delegate = self
             return fetchedResultsController
@@ -73,6 +80,16 @@ class LocationsViewController: UITableViewController {
 //set the delegate to nil when no longer need the NSFetchedResultsController, just don’t get any more notifications that were still pending
     deinit {
         fetchedResultsController.delegate = nil
+    }
+    
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return fetchedResultsController.sections!.count //ask the fetcher object for a list of the sections, which is an array of NSFetchedResultsSectionInfo objects
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionInfo = fetchedResultsController.sections![section]
+        return sectionInfo.name
     }
     
     // MARK: - UITableViewDataSource
