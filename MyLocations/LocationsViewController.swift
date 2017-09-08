@@ -110,6 +110,22 @@ class LocationsViewController: UITableViewController {
     }
     
     
+    
+// delete locations from list. Remove the Location object from the data store and the NSFetchedResultsController make sure it gets dropped from the table (through its delegate methods)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt indexPath: IndexPath) { //it enables swipe-to-delete
+        if editingStyle == .delete {
+            let location = fetchedResultsController.object(at: indexPath)
+            managedObjectContext.delete(location)
+            do {
+                try managedObjectContext.save()
+            } catch {
+                fatalCoreDataError(error)
+            }
+        }
+    }
+    
+    
 }
 
 
