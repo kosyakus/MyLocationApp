@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		847050AE1F64394A00B8D570 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847050AD1F64394A00B8D570 /* MapKit.framework */; };
 		849554C71F5360EF008AAEC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554C61F5360EF008AAEC6 /* AppDelegate.swift */; };
 		849554C91F5360EF008AAEC6 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554C81F5360EF008AAEC6 /* CurrentLocationViewController.swift */; };
 		849554CB1F5360EF008AAEC6 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554CA1F5360EF008AAEC6 /* SecondViewController.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		847050AD1F64394A00B8D570 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		849554C31F5360EF008AAEC6 /* MyLocations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		849554C61F5360EF008AAEC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		849554C81F5360EF008AAEC6 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
@@ -49,12 +51,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847050AE1F64394A00B8D570 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		847050AC1F64394A00B8D570 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				847050AD1F64394A00B8D570 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		849554BA1F5360EF008AAEC6 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +73,7 @@
 				849554E61F5F369A008AAEC6 /* Location+CoreDataProperties.swift */,
 				849554C51F5360EF008AAEC6 /* MyLocations */,
 				849554C41F5360EF008AAEC6 /* Products */,
+				847050AC1F64394A00B8D570 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +139,11 @@
 					849554C21F5360EF008AAEC6 = {
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -339,6 +356,7 @@
 				849554D91F5360EF008AAEC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
