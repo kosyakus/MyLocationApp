@@ -42,6 +42,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // added to upload data from CD. This looks up the LocationsViewController in the storyboard and gives it a reference to the managed object context
             let navigationController = tabBarViewControllers[1] as! UINavigationController
             let locationsViewController = navigationController.viewControllers[0] as! LocationsViewController
+            
+            //Before this class can use the managedObjectContext, needs to give it a reference to that object first
+            let mapViewController = tabBarViewControllers[2] as! MapViewController
+            mapViewController.managedObjectContext = managedObjectContext
+            
             locationsViewController.managedObjectContext = managedObjectContext
         }
         print(applicationDocumentsDirectory)
