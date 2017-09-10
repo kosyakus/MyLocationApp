@@ -17,7 +17,18 @@ class MapViewController: UIViewController {
     var locations = [Location]() // var to fetch the saved in CD locations and show on the screen
     
     @IBOutlet weak var mapView: MKMapView!
-    var managedObjectContext: NSManagedObjectContext!
+    var managedObjectContext: NSManagedObjectContext! {
+        didSet { //the didSet block tells the NotificationCenter to add an observer for the NSManagedObjectContextObjectsDidChange notification
+            NotificationCenter.default.addObserver(forName:
+                Notification.Name.NSManagedObjectContextObjectsDidChange,
+                                                   object: managedObjectContext,
+                                                   queue: OperationQueue.main) { notification in
+                                                    if self.isViewLoaded {
+                                                        self.updateLocations()
+                                                    }
+            }
+        } //This notification is sent out by the managedObjectContext whenever the data store changes
+    }
     
     
     @IBAction func showUser() {
@@ -93,6 +104,20 @@ class MapViewController: UIViewController {
     
     func showLocationDetails(_ sender: UIButton) {
         performSegue(withIdentifier: "EditLocation", sender: sender)
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditLocation" {
+            let navigationController = segue.destination as! UINavigationController
+            let controller = navigationController.topViewController
+                as! LocationDetailsViewController
+            controller.managedObjectContext = managedObjectContext
+            let button = sender as! UIButton
+            let location = locations[button.tag]
+            controller.locationToEdit = location
+        }
     }
     
     
