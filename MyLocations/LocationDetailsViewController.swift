@@ -152,7 +152,8 @@ class LocationDetailsViewController: UITableViewController {
             descriptionTextView.becomeFirstResponder()
         } else if indexPath.section == 1 && indexPath.row == 0 {
             //takePhotoWithCamera()
-            choosePhotoFromLibrary()
+            tableView.deselectRow(at: indexPath, animated: true) // when selecting the row it stays gray only for a while. background quickly fades from gray back to white
+            pickPhoto()
         }
     }
     
@@ -255,6 +256,33 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
         present(imagePicker, animated: true, completion: nil)
     }
     
+    
+    
+    func pickPhoto() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            showPhotoMenu()
+        } else {
+            choosePhotoFromLibrary()
+        }
+    }
+    
+    
+    func showPhotoMenu() {
+        let alertController = UIAlertController(title: nil, message: nil,
+                                                preferredStyle: .actionSheet)
+        //The handler: parameter determines what happens when you press the corresponding button in the action sheet
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        let takePhotoAction = UIAlertAction(title: "Take Photo", style: .default,
+                                            handler: { _ in self.takePhotoWithCamera() })
+        alertController.addAction(takePhotoAction)
+        let chooseFromLibraryAction = UIAlertAction(title: "Choose From Library", style: .default,
+                                                    handler: { _ in self.choosePhotoFromLibrary() })
+        //This gives handler: a closure that calls the corresponding method from the extension. Use the _ wildcard to ignore the parameter that is passed to this closure
+        
+        alertController.addAction(chooseFromLibraryAction)
+        present(alertController, animated: true, completion: nil)
+    }
     
 }
 
