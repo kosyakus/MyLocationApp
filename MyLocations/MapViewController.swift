@@ -91,9 +91,51 @@ class MapViewController: UIViewController {
     }
     
     
+    func showLocationDetails(_ sender: UIButton) {
+        
+    }
+    
+    
 }
 
 
 
-extension MapViewController: MKMapViewDelegate {
+extension MapViewController: MKMapViewDelegate { //This delegate is useful for creating your own annotation views
+    
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        // the special “is” type check operator to determine whether the annotation is really a Location object. If it isn’t, then return nil to signal that you’re not making an annotation for this other kind of object.
+        guard annotation is Location else {
+            return nil
+        }
+        // ask the map view to re-use an annotation view object. If it cannot find a recyclable annotation view, then create a new one.
+        let identifier = "Location"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        if annotationView == nil {
+            let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            // This sets some properties to configure the look and feel of the annotation view. Previously the pins were red, but here make them green
+            pinView.isEnabled = true
+            pinView.canShowCallout = true
+            pinView.animatesDrop = false
+            pinView.pinTintColor = UIColor(red: 0.32, green: 0.82, blue: 0.4, alpha: 1)
+            // create a new UIButton object that looks like a detail disclosure button (a blue circled i). Use the target-action pattern to hook up the button’s “Touch Up Inside” event with a new method showLocationDetails(), and add the button to the annotation view’s accessory view
+            let rightButton = UIButton(type: .detailDisclosure)
+            rightButton.addTarget(self,
+                                  action: #selector(showLocationDetails),
+                                  for: .touchUpInside)
+            pinView.rightCalloutAccessoryView = rightButton
+            annotationView = pinView
+        }
+        if let annotationView = annotationView {
+            annotationView.annotation = annotation
+            // Once the annotation view is constructed and configured, obtain a reference to that detail disclosure button again and set its tag to the index of the Location object in the locations array. That way then can find the Location object later in showLocationDetails() when the button is pressed.
+            let button = annotationView.rightCalloutAccessoryView as! UIButton
+            if let index = locations.index(of: annotation as! Location) {
+                button.tag = index
+            }
+        }
+        return annotationView
+    }
+    
+    
 }
