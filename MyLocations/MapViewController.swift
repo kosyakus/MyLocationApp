@@ -162,5 +162,15 @@ extension MapViewController: MKMapViewDelegate { //This delegate is useful for c
         return annotationView
     }
     
-    
 }
+
+
+//This tells the navigation bar to extend under the status bar area.
+extension MapViewController: UINavigationBarDelegate {
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
+    }
+}
+
+
+
