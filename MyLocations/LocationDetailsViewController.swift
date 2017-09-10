@@ -34,6 +34,12 @@ class LocationDetailsViewController: UITableViewController {
     
     var categoryName = "No Category" //temporarily store the chosen category
     
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var addPhotoLabel: UILabel!
+    
+    var image: UIImage? //If no photo is picked yet, image is nil, so this must be an optional
+    
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
@@ -100,16 +106,32 @@ class LocationDetailsViewController: UITableViewController {
     
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 && indexPath.row == 0 {
+        
+        switch (indexPath.section, indexPath.row) {
+        case (0, 0):
             return 88
-        } else if indexPath.section == 2 && indexPath.row == 2 {
-            addressLabel.frame.size = CGSize(width: view.bounds.size.width - 115, height: 10000)
+        case (1, _):
+            return imageView.isHidden ? 44 : 280 // this is new for adding image
+            //If the thing before the ? is true (imageView.isHidden) it returns the first value, 44. If false, it returns the second value, 280
+        case (2, 2):
+            addressLabel.frame.size = CGSize(
+            width: view.bounds.size.width - 115,
+            height: 10000)
             addressLabel.sizeToFit()
             addressLabel.frame.origin.x = view.bounds.size.width - addressLabel.frame.size.width - 15
             return addressLabel.frame.size.height + 20
-        } else {
+        default:
             return 44
         }
+    }
+    
+    
+    
+    func show(image: UIImage) {
+        imageView.image = image //This puts the image into the image view
+        imageView.isHidden = false //makes the image view visible
+        imageView.frame = CGRect(x: 10, y: 10, width: 260, height: 260) //gives it the proper dimensions
+        addPhotoLabel.isHidden = true //hides the Add Photo label not to overlap the image view
     }
     
     
@@ -238,7 +260,16 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
         present(imagePicker, animated: true, completion: nil)
     }
     
+    
+    //This is the method that gets called when the user has selected a photo in the image picker
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        image = info[UIImagePickerControllerEditedImage] as? UIImage //The info dictionary contains a variety of data describing the image that the user picked
+        
+        if let theImage = image {
+            show(image: theImage)
+        }
+        
+        tableView.reloadData() //This refreshes the table view and sets the photo row to the proper height
         dismiss(animated: true, completion: nil)
     }
     
