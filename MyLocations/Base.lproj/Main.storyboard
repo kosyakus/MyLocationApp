@@ -449,37 +449,48 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVy-yJ-uDC">
-                                            <rect key="frame" x="23" y="8" width="329" height="21"/>
+                                            <rect key="frame" x="90" y="8" width="262" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMB-Dd-JNk">
-                                            <rect key="frame" x="23" y="27" width="329" height="21"/>
+                                            <rect key="frame" x="90" y="27" width="260" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="329" id="o8p-3u-3w5"/>
+                                                <constraint firstAttribute="width" constant="260" id="o8p-3u-3w5"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="imp-6d-GhG">
+                                            <rect key="frame" x="15" y="2" width="52" height="52"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="52" id="5nM-eQ-u9W"/>
+                                                <constraint firstAttribute="width" constant="52" id="y6X-VH-7RW"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="BMB-Dd-JNk" secondAttribute="bottom" constant="1" id="48o-WG-27d"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="BMB-Dd-JNk" secondAttribute="bottom" constant="0.5" id="4re-Yd-YrQ"/>
-                                        <constraint firstItem="BMB-Dd-JNk" firstAttribute="leading" secondItem="1mz-ua-AfY" secondAttribute="leadingMargin" constant="15" id="7Tl-kt-ev9"/>
                                         <constraint firstItem="BMB-Dd-JNk" firstAttribute="top" secondItem="1mz-ua-AfY" secondAttribute="topMargin" constant="19" id="9ZT-dn-KNe"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="PVy-yJ-uDC" secondAttribute="trailing" constant="15" id="DtA-Pn-O4r"/>
+                                        <constraint firstItem="PVy-yJ-uDC" firstAttribute="leading" secondItem="1mz-ua-AfY" secondAttribute="leadingMargin" constant="82" id="MZq-Zd-DNQ"/>
                                         <constraint firstItem="BMB-Dd-JNk" firstAttribute="top" secondItem="1mz-ua-AfY" secondAttribute="topMargin" constant="19" id="NEs-2m-DTI"/>
+                                        <constraint firstItem="imp-6d-GhG" firstAttribute="top" secondItem="1mz-ua-AfY" secondAttribute="top" constant="2" id="XPe-wW-dfb"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="PVy-yJ-uDC" secondAttribute="trailing" constant="15" id="ZG6-dT-7D1"/>
                                         <constraint firstItem="PVy-yJ-uDC" firstAttribute="top" secondItem="1mz-ua-AfY" secondAttribute="topMargin" id="llt-Cd-bsh"/>
                                         <constraint firstItem="BMB-Dd-JNk" firstAttribute="leading" secondItem="PVy-yJ-uDC" secondAttribute="leading" id="mCk-ZE-Z6K"/>
-                                        <constraint firstItem="PVy-yJ-uDC" firstAttribute="leading" secondItem="1mz-ua-AfY" secondAttribute="leadingMargin" constant="15" id="vRW-vl-SLX"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="BMB-Dd-JNk" secondAttribute="trailing" constant="15" id="wOK-Ga-pn8"/>
+                                        <constraint firstItem="BMB-Dd-JNk" firstAttribute="trailing" secondItem="1mz-ua-AfY" secondAttribute="trailingMargin" constant="-17" id="rPK-0X-n29"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="BMB-Dd-JNk" secondAttribute="trailing" constant="17" id="wOK-Ga-pn8"/>
+                                        <constraint firstItem="imp-6d-GhG" firstAttribute="leading" secondItem="1mz-ua-AfY" secondAttribute="leading" constant="15" id="zIL-yU-FbN"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="addressLabel" destination="BMB-Dd-JNk" id="adM-1J-1Kv"/>
                                     <outlet property="descriptionLabel" destination="PVy-yJ-uDC" id="flB-9f-ajg"/>
+                                    <outlet property="photoImageView" destination="imp-6d-GhG" id="yhg-qr-5rK"/>
                                     <segue destination="2No-iM-RLF" kind="presentation" identifier="EditLocation" id="H3p-sn-DIe"/>
                                 </connections>
                             </tableViewCell>
@@ -493,7 +504,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5Z-CZ-cEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="670" y="260"/>
+            <point key="canvasLocation" x="669.60000000000002" y="259.52023988005999"/>
         </scene>
         <!--Locations-->
         <scene sceneID="RXr-qw-jvw">
@@ -577,6 +588,6 @@
         <image name="first" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KEg-ed-022"/>
+        <segue reference="H3p-sn-DIe"/>
     </inferredMetricsTieBreakers>
 </document>
