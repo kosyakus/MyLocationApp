@@ -40,6 +40,8 @@ class LocationDetailsViewController: UITableViewController {
     
     var image: UIImage? //If no photo is picked yet, image is nil, so this must be an optional
     
+    var observer: Any! // variable that needs to deinit the listenTheBackgroundNotification. will hold a reference to the observer
+    
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
@@ -139,17 +141,29 @@ class LocationDetailsViewController: UITableViewController {
     
 //used the notification center to listen for the UIApplicationDidEnterBackground notification. adds an observer
     func listenForBackgroundNotification() {
-        NotificationCenter.default.addObserver(
+        observer = NotificationCenter.default.addObserver(
             forName: Notification.Name.UIApplicationDidEnterBackground,
-            object: nil, queue: OperationQueue.main) { _ in
+            object: nil, queue: OperationQueue.main) { [weak self] _ in
                 
-                if self.presentedViewController != nil {
-                    self.dismiss(animated: false, completion: nil) //If there is an active image picker or action sheet, then dismiss it. Also hide the keyboard if the text view was active.
+                if let strongSelf = self {
+                    if strongSelf.presentedViewController != nil {
+                        strongSelf.dismiss(animated: false, completion: nil) //If there is an active image picker or action sheet, then dismiss it. Also hide the keyboard if the text view was active.
+                    }
+                strongSelf.descriptionTextView.resignFirstResponder()
                 }
-                self.descriptionTextView.resignFirstResponder()
         }
     }
     
+    
+    
+    //closures capture any variables that are used inside the closure. When it captures a variable, the closure simply stores a reference to that variable. This allows it to use the variable at some later point when the closure is actually performed
+    
+    
+// deinit the listenForBackgroundNotification()
+    deinit {
+        print("*** deinit \(self)")
+        NotificationCenter.default.removeObserver(observer)
+    }
     
     
     func string(from placemark: CLPlacemark) -> String {
