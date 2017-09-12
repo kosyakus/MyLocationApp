@@ -24,5 +24,6 @@ extension Location {
     @NSManaged public var locationDescription: String // remove the ?
     @NSManaged public var category: String
     @NSManaged public var placemark: CLPlacemark? // changed the type
+    @NSManaged var photoID: NSNumber?
 
 }
