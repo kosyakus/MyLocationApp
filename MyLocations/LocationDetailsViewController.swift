@@ -92,6 +92,8 @@ class LocationDetailsViewController: UITableViewController {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         gestureRecognizer.cancelsTouchesInView = false
         tableView.addGestureRecognizer(gestureRecognizer)
+        
+        listenForBackgroundNotification()
     }
     
     func hideKeyboard(_ gestureRecognizer: UIGestureRecognizer) {
@@ -132,6 +134,20 @@ class LocationDetailsViewController: UITableViewController {
         imageView.isHidden = false //makes the image view visible
         imageView.frame = CGRect(x: 10, y: 10, width: 260, height: 260) //gives it the proper dimensions
         addPhotoLabel.isHidden = true //hides the Add Photo label not to overlap the image view
+    }
+    
+    
+//used the notification center to listen for the UIApplicationDidEnterBackground notification. adds an observer
+    func listenForBackgroundNotification() {
+        NotificationCenter.default.addObserver(
+            forName: Notification.Name.UIApplicationDidEnterBackground,
+            object: nil, queue: OperationQueue.main) { _ in
+                
+                if self.presentedViewController != nil {
+                    self.dismiss(animated: false, completion: nil) //If there is an active image picker or action sheet, then dismiss it. Also hide the keyboard if the text view was active.
+                }
+                self.descriptionTextView.resignFirstResponder()
+        }
     }
     
     
