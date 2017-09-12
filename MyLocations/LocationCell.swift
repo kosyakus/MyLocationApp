@@ -57,7 +57,7 @@ class LocationCell: UITableViewCell {
     //This returns either the image from the Location or an empty placeholder image
     func thumbnail(for location: Location) -> UIImage {
         if location.hasPhoto, let image = location.photoImage {
-            return image
+            return image.resizedImage(withBounds: CGSize(width: 52, height: 52)) // thanks to the extention of UIImage
         }
         return UIImage()
     }
