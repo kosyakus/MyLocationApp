@@ -223,6 +223,7 @@ class LocationDetailsViewController: UITableViewController {
         } else { //ask Core Data for a new Location object if it doesn’t already have one
             hudView.text = "Tagged" //set the text property on the hudView
             location = Location(context: managedObjectContext)
+            location.photoID = nil // to make the proper name of the photo
         }
         
        /* let delayInSeconds = 0.6
@@ -244,6 +245,28 @@ class LocationDetailsViewController: UITableViewController {
         location.longitude = coordinate.longitude
         location.date = date
         location.placemark = placemark
+        
+        
+        //This code is only performed if image is not nil, when the user has picked a photo.
+        if let image = image {
+            // to get a new ID and assign it to the Location’s photoID property, but only if a Location didn’t already have one. If a photo existed, then keep the same ID and overwrite the existing JPEG file.
+            if !location.hasPhoto {
+                location.photoID = Location.nextPhotoID() as NSNumber
+            }
+            // converts the UIImage into the JPEG format and returns a Data object
+            if let data = UIImageJPEGRepresentation(image, 0.5) {
+                // save the Data object to the path given by the photoURL property
+                do {
+                    try data.write(to: location.photoURL, options: .atomic)
+                } catch {
+                    print("Error writing file: \(error)")
+                }
+            }
+        }
+        
+        
+        
+        
         // save the context
         do {
             try managedObjectContext.save()
