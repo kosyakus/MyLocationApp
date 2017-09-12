@@ -172,7 +172,19 @@ class LocationDetailsViewController: UITableViewController {
     }
     
     
+    // rewrited func
     func string(from placemark: CLPlacemark) -> String {
+        var line = ""
+        line.add(text: placemark.subThoroughfare)
+        line.add(text: placemark.thoroughfare, separatedBy: " ")
+        line.add(text: placemark.locality, separatedBy: ", ")
+        line.add(text: placemark.administrativeArea, separatedBy: ", ")
+        line.add(text: placemark.postalCode, separatedBy: " ")
+        line.add(text: placemark.country, separatedBy: ", ")
+        return line
+    }
+    
+/*    func string(from placemark: CLPlacemark) -> String {
         var text = ""
         if let s = placemark.subThoroughfare {
             text += s + " "
@@ -193,7 +205,7 @@ class LocationDetailsViewController: UITableViewController {
             text += s
         }
         return text
-    }
+    } */
     
     
     // MARK: - UITableViewDelegate

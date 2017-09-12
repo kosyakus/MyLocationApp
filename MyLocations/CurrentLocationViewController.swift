@@ -269,6 +269,23 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         }
     }
     
+    
+    
+        
+    // rewrited method
+    func string(from placemark: CLPlacemark) -> String {
+        var line1 = ""
+        line1.add(text: placemark.subThoroughfare)
+        line1.add(text: placemark.thoroughfare)
+        var line2 = ""
+        line2.add(text: placemark.locality)
+        line2.add(text: placemark.administrativeArea)
+        line2.add(text: placemark.postalCode)
+        line1.add(text: line2, separatedBy: "\n")
+        return line1
+    }
+    
+/*
 //The func to format the CLPlacemark object into a string:
     func string(from placemark: CLPlacemark) -> String {
         // Create new string variable for the first line of text
@@ -294,7 +311,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         }
         // adds both lines together
         return line1 + "\n" + line2
-    }
+    } */
     
     
     func didTimeOut() {
