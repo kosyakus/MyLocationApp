@@ -135,6 +135,8 @@ class LocationsViewController: UITableViewController {
                             forRowAt indexPath: IndexPath) { //it enables swipe-to-delete
         if editingStyle == .delete {
             let location = fetchedResultsController.object(at: indexPath)
+            
+            location.removePhotoFile() // this added to remove photo
             managedObjectContext.delete(location)
             do {
                 try managedObjectContext.save()

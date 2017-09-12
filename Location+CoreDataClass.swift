@@ -55,4 +55,16 @@ public class Location: NSManagedObject, MKAnnotation {
         return currentID
     }
     
+    
+    // method to remove the photo file when the Location object is deleted
+    func removePhotoFile() {
+        if hasPhoto {
+            do {
+                try FileManager.default.removeItem(at: photoURL)
+            } catch {
+                print("Error removing file: \(error)")
+            }
+        }
+    }
+    
 }
