@@ -11,6 +11,7 @@
 		847050B01F6439F100B8D570 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847050AF1F6439F100B8D570 /* MapViewController.swift */; };
 		847050B21F68267D00B8D570 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847050B11F68267D00B8D570 /* UIImage+Resize.swift */; };
 		847050B41F682A7D00B8D570 /* String +AddText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847050B31F682A7D00B8D570 /* String +AddText.swift */; };
+		847050B61F682FBF00B8D570 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847050B51F682FBF00B8D570 /* MyTabBarController.swift */; };
 		849554C71F5360EF008AAEC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554C61F5360EF008AAEC6 /* AppDelegate.swift */; };
 		849554C91F5360EF008AAEC6 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554C81F5360EF008AAEC6 /* CurrentLocationViewController.swift */; };
 		849554CE1F5360EF008AAEC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849554CC1F5360EF008AAEC6 /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 		847050AF1F6439F100B8D570 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		847050B11F68267D00B8D570 /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		847050B31F682A7D00B8D570 /* String +AddText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String +AddText.swift"; sourceTree = "<group>"; };
+		847050B51F682FBF00B8D570 /* MyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		849554C31F5360EF008AAEC6 /* MyLocations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		849554C61F5360EF008AAEC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		849554C81F5360EF008AAEC6 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			children = (
 				849554C61F5360EF008AAEC6 /* AppDelegate.swift */,
 				849554CC1F5360EF008AAEC6 /* Main.storyboard */,
+				847050B51F682FBF00B8D570 /* MyTabBarController.swift */,
 				847050B31F682A7D00B8D570 /* String +AddText.swift */,
 				849554C81F5360EF008AAEC6 /* CurrentLocationViewController.swift */,
 				849554E01F5F050C008AAEC6 /* Functions.swift */,
@@ -203,6 +206,7 @@
 				849554E71F5F369A008AAEC6 /* Location+CoreDataClass.swift in Sources */,
 				849554DD1F5D6C56008AAEC6 /* CategoryPickerViewController.swift in Sources */,
 				849554C91F5360EF008AAEC6 /* CurrentLocationViewController.swift in Sources */,
+				847050B61F682FBF00B8D570 /* MyTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
