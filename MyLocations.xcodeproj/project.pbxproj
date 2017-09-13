@@ -18,7 +18,6 @@
 		849554C91F5360EF008AAEC6 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554C81F5360EF008AAEC6 /* CurrentLocationViewController.swift */; };
 		849554CE1F5360EF008AAEC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849554CC1F5360EF008AAEC6 /* Main.storyboard */; };
 		849554D01F5360EF008AAEC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849554CF1F5360EF008AAEC6 /* Assets.xcassets */; };
-		849554D31F5360EF008AAEC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849554D11F5360EF008AAEC6 /* LaunchScreen.storyboard */; };
 		849554DB1F59F219008AAEC6 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554DA1F59F219008AAEC6 /* LocationDetailsViewController.swift */; };
 		849554DD1F5D6C56008AAEC6 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554DC1F5D6C56008AAEC6 /* CategoryPickerViewController.swift */; };
 		849554DF1F5DC129008AAEC6 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554DE1F5DC129008AAEC6 /* HudView.swift */; };
@@ -44,7 +43,6 @@
 		849554C81F5360EF008AAEC6 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
 		849554CD1F5360EF008AAEC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		849554CF1F5360EF008AAEC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		849554D21F5360EF008AAEC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		849554D41F5360EF008AAEC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		849554DA1F59F219008AAEC6 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 		849554DC1F5D6C56008AAEC6 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 				847050B11F68267D00B8D570 /* UIImage+Resize.swift */,
 				847050AF1F6439F100B8D570 /* MapViewController.swift */,
 				849554CF1F5360EF008AAEC6 /* Assets.xcassets */,
-				849554D11F5360EF008AAEC6 /* LaunchScreen.storyboard */,
 				849554D41F5360EF008AAEC6 /* Info.plist */,
 				849554E21F5F332D008AAEC6 /* DataModel.xcdatamodeld */,
 				847050BB1F695C2200B8D570 /* Sound.caf */,
@@ -187,7 +184,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				849554D31F5360EF008AAEC6 /* LaunchScreen.storyboard in Resources */,
 				849554D01F5360EF008AAEC6 /* Assets.xcassets in Resources */,
 				849554CE1F5360EF008AAEC6 /* Main.storyboard in Resources */,
 			);
@@ -229,14 +225,6 @@
 				849554CD1F5360EF008AAEC6 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		849554D11F5360EF008AAEC6 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				849554D21F5360EF008AAEC6 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -339,6 +327,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = MyLocations/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = NS.MyLocations;
@@ -351,6 +340,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = MyLocations/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = NS.MyLocations;
