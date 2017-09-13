@@ -38,6 +38,7 @@
 		847050B51F682FBF00B8D570 /* MyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		847050B71F68306500B8D570 /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		847050B91F6830AF00B8D570 /* MyImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyImagePickerController.swift; sourceTree = "<group>"; };
+		847050BB1F695C2200B8D570 /* Sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sound.caf; sourceTree = "<group>"; };
 		849554C31F5360EF008AAEC6 /* MyLocations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		849554C61F5360EF008AAEC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		849554C81F5360EF008AAEC6 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +118,7 @@
 				849554D11F5360EF008AAEC6 /* LaunchScreen.storyboard */,
 				849554D41F5360EF008AAEC6 /* Info.plist */,
 				849554E21F5F332D008AAEC6 /* DataModel.xcdatamodeld */,
+				847050BB1F695C2200B8D570 /* Sound.caf */,
 			);
 			path = MyLocations;
 			sourceTree = "<group>";
