@@ -467,7 +467,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="imp-6d-GhG">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="imp-6d-GhG">
                                             <rect key="frame" x="15" y="2" width="52" height="52"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="52" id="5nM-eQ-u9W"/>
@@ -597,7 +597,7 @@
         <image name="first" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KEg-ed-022"/>
+        <segue reference="H3p-sn-DIe"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.93333333333333335" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
 </document>
