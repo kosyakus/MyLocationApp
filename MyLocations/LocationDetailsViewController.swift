@@ -324,10 +324,12 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
     
 //The UIImagePickerController is a view controller like any other, but it is built into UIKit and it takes care of the entire process of taking new photos and picking them from the user’s photo library
     func takePhotoWithCamera() {
-        let imagePicker = UIImagePickerController()
+        //let imagePicker = UIImagePickerController()
+        let imagePicker = MyImagePickerController()
         imagePicker.sourceType = .camera
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        imagePicker.view.tintColor = view.tintColor // change the tint color of cancel button
         present(imagePicker, animated: true, completion: nil)
     }
     
@@ -351,10 +353,12 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
     
     
     func choosePhotoFromLibrary() {
-        let imagePicker = UIImagePickerController()
+        //let imagePicker = UIImagePickerController()
+        let imagePicker = MyImagePickerController()
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        imagePicker.view.tintColor = view.tintColor // change the tint color
         present(imagePicker, animated: true, completion: nil)
     }
     
